@@ -1,0 +1,47 @@
+
+## Heatmap
+total1 <- read.table("DEG_overlaped_1052.xls",header=T,sep="\t",row.names=1)
+total1[1:5,]
+dim(total1) ## 1052    4
+
+total2 <- total1[,c(1,3)]
+dim(total2) ## 1052    2
+
+total <- total2[order(-total2$siHs6st1_FC),]
+total[1:5,]
+
+library("pheatmap")
+library("RColorBrewer")
+
+png("DEG_overlaped_1052_FC_heatmap.png")
+pheatmap(total,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("seagreen4", "white", "hotpink"))(20),breaks = seq(-1,1,length.out = 20))
+dev.off()
+
+
+
+
+
+
+
+## Fold-change scatter plot 
+total <- read.table("DEG_overlaped_1052.xls",header=T,sep="\t",row.names=1)
+total[1:5,]
+dim(total) ## 1052    4
+ 
+png("DEG_overlaped_1052_FC_ScatterPlot.png")
+plot(total$siFgfr1_FC, total$siHs6st1_FC,xlim=c(-2,2),ylim=c(-2,2), pch=21, cex=1.5, lwd=1.5,
+      bg=rgb(0, 170, 160, max = 255), col="darkgreen" )
+abline(v=0,lty=3, col="grey", lwd=2)
+abline(h=0,lty=3, col="grey", lwd=2)
+dev.off()
+
+## Both up
+dim(total[(total$siHs6st1_FC>0) & (total$siFgfr1_FC>0), ]) ## 492
+## Both down
+dim(total[(total$siHs6st1_FC<0) & (total$siFgfr1_FC<0), ]) ## 557
+## Hs6st1-up, Fgfr1-down
+dim(total[(total$siHs6st1_FC>0) & (total$siFgfr1_FC<0), ]) ## 1
+## Hs6st1-down, Fgfr1-up
+dim(total[(total$siHs6st1_FC<0) & (total$siFgfr1_FC>0), ]) ## 2
+
+

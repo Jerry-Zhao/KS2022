@@ -1,0 +1,44 @@
+
+## siHs6st1
+total <- read.table("edgeR_glmQLF_2022_N2a_siRNA_siHs6st1_exonic_gene_Jerry.xls",header=T, sep="\t",row.names=1)
+total[1:5,]
+
+diffgene <- total[total$FDR<0.05,]
+upgene <- diffgene[diffgene$logFC>0,]
+downgene <- diffgene[diffgene$logFC<0,]
+
+dim(total)     # 16397 
+dim(diffgene)  # 1436
+dim(upgene)    # 740
+dim(downgene)  # 696
+
+pdf("Volcano_plot_2022_N2a_siRNA_exonic_gene_siHs6st1.pdf")
+plot(total$logFC, -log(total$FDR,10), pch=21, col="gray28", bg=rgb(127,127,127,max=255), xlim=c(-4,4),ylim=c(0,5.5), cex=0.8)
+points(upgene$logFC, -log(upgene$FDR,10), pch=21, col="hotpink4", bg="hotpink", cex=0.8)
+points(downgene$logFC, -log(downgene$FDR,10), pch=21, col="seagreen4", bg="seagreen1", cex=0.8)
+dev.off()
+
+
+
+## siFgfr1
+total <- read.table("edgeR_glmQLF_2022_N2a_siRNA_siFgfr1_exonic_gene_Jerry.xls",header=T, sep="\t",row.names=1)
+total[1:5,]
+
+diffgene <- total[total$FDR<0.05,]
+upgene <- diffgene[diffgene$logFC>0,]
+downgene <- diffgene[diffgene$logFC<0,]
+
+dim(total)     # 15268
+dim(diffgene)  # 4804
+dim(upgene)    # 2526
+dim(downgene)  # 2278
+
+pdf("Volcano_plot_2022_N2a_siRNA_exonic_gene_siFgfr1.pdf")
+plot(total$logFC, -log(total$FDR,10), pch=21, col="gray28", bg=rgb(127,127,127,max=255), xlim=c(-5,5),ylim=c(0,10), cex=0.8)
+points(upgene$logFC, -log(upgene$FDR,10), pch=21, col="hotpink4", bg="hotpink", cex=0.8)
+points(downgene$logFC, -log(downgene$FDR,10), pch=21, col="seagreen4", bg="seagreen1", cex=0.8)
+dev.off()
+
+
+
+

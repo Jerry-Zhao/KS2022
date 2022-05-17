@@ -1,0 +1,7 @@
+
+## Ensembl ID --> DEG_overlap_1052_ID.txt
+findMotifs.pl DEG_overlap_1052_ID.txt mouse motif/  -start -1000 -end 1000 -len 8,10,12 -p 30
+
+
+
+

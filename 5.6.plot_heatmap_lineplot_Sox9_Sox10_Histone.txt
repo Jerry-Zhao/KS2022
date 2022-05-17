@@ -1,0 +1,109 @@
+
+## Sox9: heatmap, line plot
+##### Heatmap DEGs: Sox9 
+library("pheatmap")
+library("RColorBrewer")
+total <- read.table("Heatmap_GSE69109_Nasal_Chondrocyte_Sox9_ChIPseq_rep1_128.txt",sep="\t",header=T, row.names=1)
+total2 <- total[,c(-1,-2)]
+total3 <- total2[order(-rowSums(total2)),]
+png("Plot_heatmap_GSE69109_Nasal_Chondrocyte_Sox9_ChIPseq_rep1_128.png")
+pheatmap(total3,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("lightgrey", "deeppink"))(40),breaks = seq(0,100,length.out = 40),show_rownames = F, show_colnames = F)
+dev.off()
+
+##### line plot, DEGs and control genes: Sox9
+ctrl <- read.table("Heatmap_ctrl_GSE69109_Nasal_Chondrocyte_Sox9_ChIPseq_rep1_128.txt",sep="\t",header=T)
+ctrl2 <- ctrl[,c(-1)]
+deg <- read.table("Heatmap_GSE69109_Nasal_Chondrocyte_Sox9_ChIPseq_rep1_128.txt",sep="\t",header=T, row.names=1)
+deg2 <- deg[,c(-1,-2)]
+png("Plot_lines_GSE69109_Nasal_Chondrocyte_Sox9_DEGs_ctrl.png", width = 400, height = 400)
+plot(1:10000,colSums(deg2)/1000, type="l", col="deeppink",ylim=c(0,80),lwd=3)
+lines(1:10000,colSums(ctrl2)/1000,col="grey", lwd=3)
+dev.off()
+pdf("Plot_lines_GSE69109_Nasal_Chondrocyte_Sox9_DEGs_ctrl.pdf")
+plot(1:10000,colSums(deg2)/1000, type="l", col="deeppink",ylim=c(0,80),lwd=5)
+lines(1:10000,colSums(ctrl2)/1000,col="grey", lwd=5)
+dev.off()
+
+
+
+
+
+
+### H3K27ac, H3K4me3: heatmap
+library("pheatmap")
+library("RColorBrewer")
+total <- read.table("Heatmap_Deborah_N2a_ChIPseq_H3K27ac_111.txt",sep="\t",header=T, row.names=1)
+total2 <- total[,c(-1,-2)]
+total3 <- total2[order(-rowSums(total2)),]
+png("Plot_heatmap_Deborah_N2a_ChIPseq_H3K27ac_111.png")
+pheatmap(total3,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("lightgrey", "darkorange"))(40),breaks = seq(0,100,length.out = 40),show_rownames = F, show_colnames = F)
+dev.off()
+
+
+library("pheatmap")
+library("RColorBrewer")
+total <- read.table("Heatmap_Deborah_N2a_ChIPseq_H3K4me3_101.txt",sep="\t",header=T, row.names=1)
+total2 <- total[,c(-1,-2)]
+total3 <- total2[order(-rowSums(total2)),]
+png("Plot_heatmap_Deborah_N2a_ChIPseq_H3K4me3_101.png")
+pheatmap(total3,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("lightgrey", "cyan3"))(40),breaks = seq(0,100,length.out = 40),show_rownames = F, show_colnames = F)
+dev.off()
+
+
+
+
+
+
+
+#### Sox10: line plot, heatmap
+
+##### line plot, DEGs and control genes: Sox10
+### Rep 1
+ctrl <- read.table("Heatmap_ctrl_GSE69949_Embryonic_skin_Sox10_rep1_67.txt",sep="\t",header=T)
+ctrl2 <- ctrl[,c(-1)]
+deg <- read.table("Heatmap_GSE69949_Embryonic_skin_Sox10_rep1_67.txt",sep="\t",header=T, row.names=1)
+deg2 <- deg[,c(-1,-2)]
+pdf("Plot_lines_GSE69949_Embryonic_skin_Sox10_rep1_DEGs_ctrl.pdf")
+plot(1:10000,colSums(deg2)/1000, type="l", col="deeppink",ylim=c(0,40),lwd=5)
+lines(1:10000,colSums(ctrl2)/1000,col="grey", lwd=5)
+dev.off()
+
+## Rep 2 
+ctrl <- read.table("Heatmap_ctrl_GSE69949_Embryonic_skin_Sox10_rep2_66.txt",sep="\t",header=T)
+ctrl2 <- ctrl[,c(-1)]
+deg <- read.table("Heatmap_GSE69949_Embryonic_skin_Sox10_rep2_66.txt",sep="\t",header=T, row.names=1)
+deg2 <- deg[,c(-1,-2)]
+pdf("Plot_lines_GSE69949_Embryonic_skin_Sox10_rep2_DEGs_ctrl.pdf")
+plot(1:10000,colSums(deg2)/1000, type="l", col="deeppink",ylim=c(0,40),lwd=5)
+lines(1:10000,colSums(ctrl2)/1000,col="grey", lwd=5)
+dev.off()
+
+
+
+###### Heatmap DEGs: Sox10
+
+library("pheatmap")
+library("RColorBrewer")
+total <- read.table("Heatmap_GSE69949_Embryonic_skin_Sox10_rep1_67.txt",sep="\t",header=T, row.names=1)
+total2 <- total[,c(-1,-2)]
+total3 <- total2[order(-rowSums(total2)),]
+png("Plot_heatmap_GSE69949_Embryonic_skin_Sox10_rep1_67.png")
+pheatmap(total3,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("lightgrey", "darkorchid1"))(40),breaks = seq(0,20,length.out = 40),show_rownames = F, show_colnames = F)
+dev.off()
+
+
+
+library("pheatmap")
+library("RColorBrewer")
+total <- read.table("Heatmap_GSE69949_Embryonic_skin_Sox10_rep2_66.txt",sep="\t",header=T, row.names=1)
+total2 <- total[,c(-1,-2)]
+total3 <- total2[order(-rowSums(total2)),]
+png("Plot_heatmap_GSE69949_Embryonic_skin_Sox10_rep2_66.png")
+pheatmap(total3,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("lightgrey", "darkorchid1"))(40),breaks = seq(0,20,length.out = 40),show_rownames = F, show_colnames = F)
+dev.off()
+
+
+
+
+
+

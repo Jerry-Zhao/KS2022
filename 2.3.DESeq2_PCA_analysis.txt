@@ -1,0 +1,93 @@
+
+
+## Exonic Gene: siHs6st1
+library("DESeq2")
+options(width=300)
+countData <- read.table("Merged_2022_N2a_siRNA_totalRNA_exonic_gene_Jerry.xls",sep="\t",header=T,row.names=1)
+countData[1:5,]
+countData2 <- countData[,1:6]
+countData2[1:5,]
+
+colData2 <- data.frame(condition=c("Ctrl","Ctrl","Ctrl","siHs6st1","siHs6st1","siHs6st1"),
+                       row.names=c("Ctrl_rep1","Ctrl_rep2","Ctrl_rep3","siHs6st1_rep1","siHs6st1_rep2","siHs6st1_rep3"))
+colData2
+
+dds <- DESeqDataSetFromMatrix(countData=countData2, colData=colData2, design=~condition)
+dds <- DESeq(dds)
+res <- results(dds)
+resOrdered <- res[order(res$padj),]
+head(resOrdered)
+rld <- rlog(dds)
+vsd <- varianceStabilizingTransformation(dds)
+
+print(plotPCA(rld, intgroup=c("condition"),ntop = 1000))
+result2 <- plotPCA(rld, intgroup=c("condition"),ntop = 1000, returnData = TRUE)
+result2
+#                      PC1        PC2    group condition          name
+# Ctrl_rep1     -2.5143439  0.6339204     Ctrl      Ctrl     Ctrl_rep1
+# Ctrl_rep2     -5.9541657 -0.4322927     Ctrl      Ctrl     Ctrl_rep2
+# Ctrl_rep3     -3.2714339 -1.1851796     Ctrl      Ctrl     Ctrl_rep3
+# siHs6st1_rep1  0.4380687  1.1261580 siHs6st1  siHs6st1 siHs6st1_rep1
+# siHs6st1_rep2  4.5448823  1.9831884 siHs6st1  siHs6st1 siHs6st1_rep2
+# siHs6st1_rep3  6.7569924 -2.1257945 siHs6st1  siHs6st1 siHs6st1_rep3
+
+CtrlPCA <- result2[1:3,]
+KDPCA <- result2[4:6,]
+png("PCA_DESeq2_2022_N2a_siRNA_exonic_gene_siHs6st1_top1000_2.png", width = 300, height = 300)
+plot(CtrlPCA$PC1, CtrlPCA$PC2, pch=21, cex=3, col="gray28", bg=rgb(127,127,127,max=255), lwd=2, xlim=c(-7,7),ylim=c(-3,3))
+points(KDPCA$PC1, KDPCA$PC2, pch=21, cex=3, col="gray28", bg=rgb(244,177,131,max=255), lwd=2)
+dev.off()
+
+
+
+
+
+
+
+
+
+## Exonic Gene: siFgfr1
+library("DESeq2")
+options(width=300)
+countData <- read.table("Merged_2022_N2a_siRNA_totalRNA_exonic_gene_Jerry.xls",sep="\t",header=T,row.names=1)
+countData[1:5,]
+countData2 <- countData[,c(1:3,7:10)]
+countData2[1:5,]
+
+colData2 <- data.frame(condition=c(
+   "Ctrl",    "Ctrl",    "Ctrl",
+   "siFgfr1", "siFgfr1", "siFgfr1","siFgfr1"),
+  row.names=c(
+   "Ctrl_rep1",    "Ctrl_rep2",    "Ctrl_rep3",
+   "siFgfr1_rep1", "siFgfr1_rep2", "siFgfr1_rep3","siFgfr1_rep4"))
+colData2
+
+dds <- DESeqDataSetFromMatrix(countData=countData2, colData=colData2, design=~condition)
+dds <- DESeq(dds)
+res <- results(dds)
+resOrdered <- res[order(res$padj),]
+head(resOrdered)
+rld <- rlog(dds)
+vsd <- varianceStabilizingTransformation(dds)
+
+print(plotPCA(rld, intgroup=c("condition"),ntop = 1000))
+result2 <- plotPCA(rld, intgroup=c("condition"),ntop = 1000, returnData = TRUE)
+result2
+#                    PC1         PC2   group condition         name
+# Ctrl_rep1    -5.145232  0.84685228    Ctrl      Ctrl    Ctrl_rep1
+# Ctrl_rep2    -8.239717 -0.09510479    Ctrl      Ctrl    Ctrl_rep2
+# Ctrl_rep3    -6.856965  1.09222162    Ctrl      Ctrl    Ctrl_rep3
+# siFgfr1_rep1  8.408507  2.25437488 siFgfr1   siFgfr1 siFgfr1_rep1
+# siFgfr1_rep2  1.589429 -3.63260476 siFgfr1   siFgfr1 siFgfr1_rep2
+# siFgfr1_rep3  5.211057  1.26200011 siFgfr1   siFgfr1 siFgfr1_rep3
+# siFgfr1_rep4  5.032920 -1.72773934 siFgfr1   siFgfr1 siFgfr1_rep4
+
+CtrlPCA <- result2[1:3,]
+KDPCA <- result2[4:7,]
+png("PCA_DESeq2_2022_N2a_siRNA_exonic_gene_siFgfr1_top1000_2.png", width = 300, height = 300)
+plot(CtrlPCA$PC1, CtrlPCA$PC2, pch=21, cex=3, col="gray28", bg=rgb(127,127,127,max=255), lwd=2, xlim=c(-10,10),ylim=c(-4,4))
+points(KDPCA$PC1, KDPCA$PC2, pch=21, cex=3, col="gray28", bg=rgb(244,177,131,max=255), lwd=2)
+dev.off()
+
+
+

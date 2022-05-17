@@ -1,0 +1,16 @@
+
+
+## Protein 
+## NP_004798.3 heparan-sulfate 6-O-sulfotransferase 1 [Homo sapiens]
+
+python3 docker/run_docker.py --fasta_paths=Human_HS6ST1.fasta --max_template_date=2020-05-14 --data_dir=/media/ChIPseq/AlphaFold2
+
+python3 docker/run_docker.py --fasta_paths=Human_HS6ST1_M404V.fasta --max_template_date=2020-05-14 --data_dir=/media/ChIPseq/AlphaFold2
+python3 docker/run_docker.py --fasta_paths=Human_HS6ST1_R306Q.fasta --max_template_date=2020-05-14 --data_dir=/media/ChIPseq/AlphaFold2
+python3 docker/run_docker.py --fasta_paths=Human_HS6ST1_R306W.fasta --max_template_date=2020-05-14 --data_dir=/media/ChIPseq/AlphaFold2
+python3 docker/run_docker.py --fasta_paths=Human_HS6ST1_R323Q.fasta --max_template_date=2020-05-14 --data_dir=/media/ChIPseq/AlphaFold2
+python3 docker/run_docker.py --fasta_paths=Human_HS6ST1_R375H.fasta --max_template_date=2020-05-14 --data_dir=/media/ChIPseq/AlphaFold2
+python3 docker/run_docker.py --fasta_paths=Human_HS6ST1_R382W.fasta --max_template_date=2020-05-14 --data_dir=/media/ChIPseq/AlphaFold2
+
+## ranked_0.pdb will be used as the final structure. 
+

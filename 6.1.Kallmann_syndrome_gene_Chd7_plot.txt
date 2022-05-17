@@ -1,0 +1,20 @@
+
+
+#### Chd7 ChIP-seq
+#  GSE164360
+# Reddy NC, Majidi SP, Kong L, Nemera M et al. CHARGE syndrome protein CHD7 regulates epigenomic activation of enhancers in granule cell precursors and gyrification of the cerebellum. Nat Commun 2021 Sep 29;12(1):5702. PMID: 34588434
+# Gabel HW
+# Anterior Mouse Cerebellum
+
+
+# GSM5008216	P4_ChIP_CHD7_Ctrl_1  SRR13371039
+# GSM5008217	P4_ChIP_CHD7_Ctrl_2  SRR13371040
+
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/039/SRR13371039/SRR13371039.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/040/SRR13371040/SRR13371040.fastq.gz
+
+mv SRR13371039.fastq.gz GSE164360_Cerebellum_P4_Chd7_rep1.fastq.gz
+mv SRR13371040.fastq.gz GSE164360_Cerebellum_P4_Chd7_rep2.fastq.gz
+
+
+

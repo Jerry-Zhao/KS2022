@@ -1,0 +1,17 @@
+
+total <- read.table("Sox9_ChIPseq_DEG_Ctrl_promoter_count.xls",sep="\t",header=T,row.names=1)
+pdf("Plot_boxplot_Sox9_DEGs_Ctrl_promoter.pdf")
+boxplot(total$Count~factor(total$Category,levels=c("Ctrl","DEG")), col=c("grey","deeppink"),outcol="grey70", ylim=c(0,800))
+dev.off()
+
+t.test(total[total$Category=="DEG",][,2],total[total$Category=="Ctrl",][,2],alternative="greater")
+#       Welch Two Sample t-test
+# data:  total[total$Category == "DEG", ][, 2] and total[total$Category == "Ctrl", ][, 2]
+# t = 3.0249, df = 1095.7, p-value = 0.001273
+# alternative hypothesis: true difference in means is greater than 0
+# 95 percent confidence interval:
+#  91.82038      Inf
+# sample estimates:
+# mean of x mean of y 
+#  386.5741  185.1096 
+

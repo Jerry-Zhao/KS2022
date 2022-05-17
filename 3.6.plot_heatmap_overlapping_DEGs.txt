@@ -1,0 +1,36 @@
+
+### siHs6st1
+logFC <- read.table("DEG_CPM_logFC_for_heatmap_siHs6st1.xls",header=T,sep="\t",row.names=1)
+logFC[1:5,]
+
+logFC2 <- logFC[order(logFC$siHs6st1_1 + logFC$siHs6st1_2 +logFC$siHs6st1_3),]
+logFC2[1:5,]
+
+library("pheatmap")
+library("RColorBrewer")
+
+pheatmap(logFC2,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("seagreen4", "white", "hotpink"))(40),breaks = seq(-1,1,length.out = 40))
+
+png("DEG_CPM_logFC_siHs6st1_heatmap.png")
+pheatmap(logFC2,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("seagreen4", "white", "hotpink"))(40),breaks = seq(-1,1,length.out = 40))
+dev.off()
+
+
+### siFgfr1
+logFC <- read.table("DEG_CPM_logFC_for_heatmap_siFgfr1.xls",header=T,sep="\t",row.names=1)
+logFC[1:5,]
+
+logFC2 <- logFC[order(logFC$siFgfr1_1 + logFC$siFgfr1_2 +logFC$siFgfr1_3+logFC$siFgfr1_4),]
+logFC2[1:5,]
+
+library("pheatmap")
+library("RColorBrewer")
+
+pheatmap(logFC2,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("seagreen4", "white", "hotpink"))(40),breaks = seq(-1,1,length.out = 40))
+
+png("DEG_CPM_logFC_siFgfr1_heatmap.png")
+pheatmap(logFC2,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("seagreen4", "white", "hotpink"))(40),breaks = seq(-1,1,length.out = 40))
+dev.off()
+
+
+

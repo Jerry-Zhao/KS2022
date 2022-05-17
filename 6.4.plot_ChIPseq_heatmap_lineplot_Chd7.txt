@@ -1,0 +1,57 @@
+
+#### Final plot
+#### Heatmap
+library("pheatmap")
+library("RColorBrewer")
+total_a <- read.table("Heatmap_GSE164360_Cerebellum_P4_Chd7_rep1_145.txt",sep="\t",header=T, row.names=1)
+total_a2 <- total_a[,c(-1,-2)]
+total_a3 <- total_a2[order(-rowSums(total_a2)),]
+total_b <- read.table("Heatmap_GSE164360_Cerebellum_P4_Chd7_rep2_138.txt",sep="\t",header=T, row.names=1)
+total_b2 <- total_b[,c(-1,-2)]
+total_b3 <- total_b2[order(-rowSums(total_b2)),]
+
+total3 <- total_a3+total_b3
+png("Plot_heatmap_GSE164360_Cerebellum_P4_Chd7_rep1_rep2.png")
+pheatmap(total3,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("lightgrey", "deeppink"))(40),breaks = seq(0,100,length.out = 40),show_rownames = F, show_colnames = F)
+dev.off()
+
+
+library("pheatmap")
+library("RColorBrewer")
+total_a <- read.table("Heatmap_ctrl_GSE164360_Cerebellum_P4_Chd7_rep1_145.txt",sep="\t",header=T)
+total_a2 <- total_a[,c(-1)]
+total_a3 <- total_a2[order(-rowSums(total_a2)),]
+total_b <- read.table("Heatmap_ctrl_GSE164360_Cerebellum_P4_Chd7_rep2_138.txt",sep="\t",header=T)
+total_b2 <- total_b[,c(-1)]
+total_b3 <- total_b2[order(-rowSums(total_b2)),]
+
+total3 <- total_a3+total_b3
+png("Plot_heatmap_ctrl_GSE164360_Cerebellum_P4_Chd7_rep1_rep2.png")
+pheatmap(total3,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("lightgrey", "deeppink"))(40),breaks = seq(0,100,length.out = 40),show_rownames = F, show_colnames = F)
+dev.off()
+
+
+## line plot
+ctrl_a <- read.table("Heatmap_ctrl_GSE164360_Cerebellum_P4_Chd7_rep1_145.txt",sep="\t",header=T)
+ctrl1 <- ctrl_a[,c(-1)]
+ctrl_b <- read.table("Heatmap_ctrl_GSE164360_Cerebellum_P4_Chd7_rep2_138.txt",sep="\t",header=T)
+ctrl2 <- ctrl_b[,c(-1)]
+ctrl <- ctrl1+ctrl2
+
+deg_a <- read.table("Heatmap_GSE164360_Cerebellum_P4_Chd7_rep1_145.txt",sep="\t",header=T, row.names=1)
+deg1 <- deg_a[,c(-1,-2)]
+deg_b <- read.table("Heatmap_GSE164360_Cerebellum_P4_Chd7_rep2_138.txt",sep="\t",header=T, row.names=1)
+deg2 <- deg_b[,c(-1,-2)]
+deg <- deg1+deg2
+
+pdf("Plot_lines_GSE164360_Cerebellum_P4_Chd7_DEGs_ctrl.pdf")
+plot(1:10000,colSums(deg2)/1000, type="l", col="deeppink",ylim=c(0,60),lwd=5)
+lines(1:10000,colSums(ctrl2)/1000,col="grey", lwd=5)
+dev.off()
+
+
+
+
+
+
+

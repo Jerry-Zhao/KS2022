@@ -1,0 +1,48 @@
+
+
+# Sox9
+# GSE69109
+# Ohba S, He X, Hojo H, McMahon AP. Distinct Transcriptional Programs Underlie Sox9 Regulation of the Mammalian Chondrocyte. Cell Rep 2015 Jul 14;12(2):229-43. PMID: 26146088
+
+# GSM1693007	Nasal_Chondrocyte_Sox9_ChIPseq SRR2034943
+
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR203/003/SRR2034943/SRR2034943.fastq.gz
+
+mv SRR2034943.fastq.gz GSE69109_Nasal_Chondrocyte_Sox9_ChIPseq_rep1.fastq.gz
+
+
+
+
+
+
+#### Sox10
+# GSE69949
+# Fufa TD, Harris ML, Watkins-Chow DE, Levy D et al. Genomic analysis reveals distinct mechanisms and functional classes of SOX10-regulated genes in melanocytes. Hum Mol Genet 2015 Oct 1;24(19):5433-50. PMID: 26206884
+
+# GSM1713774	SOX10_ChIP_rep1  SRR2067486
+# GSM1713775	SOX10_ChIP_rep2  SRR2067487
+
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR206/006/SRR2067486/SRR2067486.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR206/007/SRR2067487/SRR2067487.fastq.gz
+
+mv SRR2067486.fastq.gz GSE69949_Embryonic_skin_Sox10_rep1.fastq.gz
+mv SRR2067487.fastq.gz GSE69949_Embryonic_skin_Sox10_rep2.fastq.gz
+
+
+
+
+### Histone H3K27ac and H3K4me3
+# GSE91043
+# Kwon DY, Zhao YT, Lamonica JM, Zhou Z. Locus-specific histone deacetylation using a synthetic CRISPR-Cas9-based HDAC. Nat Commun 2017 May 12;8:15315. PMID: 28497787
+
+# GSM2420116      Neuro2a_ChIPseq_H3K27ac
+# GSM2420117      Neuro2a_ChIPseq_H3K4me3
+
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR508/000/SRR5087850/SRR5087850.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR508/001/SRR5087851/SRR5087851.fastq.gz
+
+mv SRR5087850.fastq.gz Deborah_N2a_ChIPseq_H3K27ac.fastq.gz
+mv SRR5087851.fastq.gz Deborah_N2a_ChIPseq_H3K4me3.fastq.gz
+
+
+
