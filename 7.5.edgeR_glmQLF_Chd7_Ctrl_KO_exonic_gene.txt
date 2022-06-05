@@ -1,0 +1,39 @@
+
+library("edgeR")
+data <- read.table("Merged_GSE164360_Cerebellum_P4_Chd7_Ctrl_KO_exonic_gene_Jerry.xls",sep="\t",header=T,row.names=1)
+data[1:5,]
+
+data_y <- DGEList(counts=data, group=c("Ctrl","Ctrl","Ctrl","Ctrl","Ctrl","KO","KO","KO","KO","KO"))
+keep <- (rowSums(cpm(data_y)))/10 >= 0.5
+y <- data_y[keep,]
+dim(y) ## [1]  15078   10 
+y$samples$lib.size <- colSums(y$counts)
+y <- calcNormFactors(y)
+y$samples
+
+write.table(round(cpm(y),3),"CPM_edgeR_Cerebellum_P4_Chd7_Ctrl_KO_exonic_gene_Jerry.xls",sep="\t",quote=FALSE)
+
+plotMDS(y)
+#png("MDS_edgeR_2022_N2a_siRNA_siHs6st1_exonic_gene_Jerry.png")
+#plotMDS(y)
+#dev.off()
+ 
+group <- factor(c("Ctrl","Ctrl","Ctrl","Ctrl","Ctrl","KO","KO","KO","KO","KO"))
+design <- model.matrix(~group)
+y <- estimateDisp(y,design)
+fit <- glmQLFit(y,design)
+test_result <- glmQLFTest(fit,coef=2)  
+summary(decideTestsDGE(test_result))
+total <- data.frame(topTags(test_result, n=length(y$AveLogCPM)))
+total[1:5,]
+
+write.table(total,file="edgeR_glmQLF_Cerebellum_P4_Chd7_Ctrl_KO_exonic_gene_Jerry.xls",quote=FALSE,sep="\t",col.names=NA)
+
+## FDR < 0.05
+dim(total[total$FDR<0.05,]) ## 5995  DEGs
+## FDR < 0.05 and FC >1.5
+dim(total[total$FDR<0.05 & abs(total$logFC) >log(1.5,2),]) ## 2616   DEGs
+## FDR < 0.05 and FC >2 
+dim(total[total$FDR<0.05 & abs(total$logFC) >1,]) ## 1382   DEGs
+
+

@@ -1,0 +1,38 @@
+
+total <- read.table("DEGs_overlap_compare_Hs6st1_Fgfr1_Chd7.xls",header=T,row.names=1,sep="\t")
+total[1:5,]
+
+total2 <- total[,c(1,3,5)]
+total2[1:5,]
+
+total3 <- total2[order(-total2$Hs6st1.FC),]
+
+library("pheatmap")
+library("RColorBrewer")
+
+pheatmap(total3,cluster_rows = FALSE,cluster_cols=FALSE, color=colorRampPalette(c("seagreen4", "white", "hotpink"))(40),breaks = seq(-1,1,length.out = 40))
+
+up1 <- total3[total3$Hs6st1.FC>0,]
+down1 <- total3[total3$Hs6st1.FC<0,]
+
+dim(up1)   ## 255
+dim(down1) ## 189
+
+up <- data.frame(FC=c(up1$Hs6st1.FC,up1$Fgfr1.FC,up1$Chd7.FC), 
+             Category=c(rep("Hs6st1",length(up1[,1])), rep("Fgfr1",length(up1[,1])), 
+                        rep("Chd7",length(up1[,1]))))
+pdf("Boxplot_Chd7KO_KD_logFC_up.pdf")
+boxplot(up$FC~factor(up$Category,levels=c("Hs6st1","Fgfr1","Chd7")), col=c("hotpink","hotpink","hotpink"),outcol="grey70", ylim=c(-2,3))
+dev.off()
+
+ 
+down <- data.frame(FC=c(down1$Hs6st1.FC,down1$Fgfr1.FC,down1$Chd7.FC),
+             Category=c(rep("Hs6st1",length(down1[,1])), rep("Fgfr1",length(down1[,1])),
+                        rep("Chd7",length(down1[,1]))))
+pdf("Boxplot_Chd7KO_KD_logFC_down.pdf")
+boxplot(down$FC~factor(down$Category,levels=c("Hs6st1","Fgfr1","Chd7")), col=c("seagreen1","seagreen1","seagreen1"),outcol="grey70", ylim=c(-1.5,1.5))
+dev.off()
+
+
+
+

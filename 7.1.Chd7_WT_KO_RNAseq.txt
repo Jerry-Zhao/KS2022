@@ -1,0 +1,45 @@
+
+#### Chd7 RNA-Seq
+
+# 1. GSE164360
+# Reddy NC, Majidi SP, Kong L, Nemera M et al. CHARGE syndrome protein CHD7 regulates epigenomic activation of enhancers in granule cell precursors and gyrification of the cerebellum. Nat Commun 2021 Sep 29;12(1):5702. PMID: 34588434
+# Gabel HW
+# Anterior Mouse Cerebellum
+
+
+# GSM5008227	P4_RNA_Ctrl_1  SRR13371050
+# GSM5008228	P4_RNA_Ctrl_2  SRR13371051
+# GSM5008229	P4_RNA_Ctrl_3  SRR13371052
+# GSM5008230	P4_RNA_Ctrl_4  SRR13371053
+# GSM5008231	P4_RNA_Ctrl_5  SRR13371054
+# GSM5008232	P4_RNA_cKO_1   SRR13371055
+# GSM5008233	P4_RNA_cKO_2   SRR13371056
+# GSM5008234	P4_RNA_cKO_3   SRR13371057
+# GSM5008235	P4_RNA_cKO_4   SRR13371058
+# GSM5008236	P4_RNA_cKO_5   SRR13371059
+
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/050/SRR13371050/SRR13371050.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/051/SRR13371051/SRR13371051.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/052/SRR13371052/SRR13371052.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/053/SRR13371053/SRR13371053.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/054/SRR13371054/SRR13371054.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/055/SRR13371055/SRR13371055.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/056/SRR13371056/SRR13371056.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/057/SRR13371057/SRR13371057.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/058/SRR13371058/SRR13371058.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR133/059/SRR13371059/SRR13371059.fastq.gz
+
+mv SRR13371050.fastq.gz GSE164360_Cerebellum_P4_Chd7_WT_rep1.fastq.gz
+mv SRR13371051.fastq.gz GSE164360_Cerebellum_P4_Chd7_WT_rep2.fastq.gz
+mv SRR13371052.fastq.gz GSE164360_Cerebellum_P4_Chd7_WT_rep3.fastq.gz
+mv SRR13371053.fastq.gz GSE164360_Cerebellum_P4_Chd7_WT_rep4.fastq.gz
+mv SRR13371054.fastq.gz GSE164360_Cerebellum_P4_Chd7_WT_rep5.fastq.gz
+mv SRR13371055.fastq.gz GSE164360_Cerebellum_P4_Chd7_KO_rep1.fastq.gz
+mv SRR13371056.fastq.gz GSE164360_Cerebellum_P4_Chd7_KO_rep2.fastq.gz
+mv SRR13371057.fastq.gz GSE164360_Cerebellum_P4_Chd7_KO_rep3.fastq.gz
+mv SRR13371058.fastq.gz GSE164360_Cerebellum_P4_Chd7_KO_rep4.fastq.gz
+mv SRR13371059.fastq.gz GSE164360_Cerebellum_P4_Chd7_KO_rep5.fastq.gz
+
+
+
+
